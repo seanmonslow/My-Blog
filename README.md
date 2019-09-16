@@ -7,6 +7,6 @@ Dockerfile also included so you can serve it outside the usual php artisan serve
 Steps:
 
 git clone this url
-composer install
-docker build -t blog .
-docker run -p 80:80 -v /{directory}/blog:/var/www/html/ blog
+composer install<br>
+docker build -t blog .<br>
+docker run -p 80:80 -v /{directory}/blog:/var/www/html/ blog<br>
