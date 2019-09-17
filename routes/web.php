@@ -24,8 +24,8 @@ Route::get('/admin', );
 Route::get('/admin/create-post', );
 
 Route::post('/admin/create-post', );
-
-Route::get('/post/{id}', )*/
+*/
+Route::get('/post/{id}', 'PostController@show');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

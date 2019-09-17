@@ -59,9 +59,17 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Request $request)
     {
         //
+
+        $post = Post::with('poster')->findOrFail($request->route('id'));
+
+        $post->content = $post->getContent();
+
+        //return $post;
+
+        return view('post', ["post"=> $post]);
     }
 
     /**

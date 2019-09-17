@@ -35,34 +35,18 @@
 <script>
 
 	var editor = new Quill('#editor', {
-	    modules: { toolbar: '#toolbar' },
-	    theme: 'snow'
-  	});
+    modules: { toolbar: '#toolbar' },
+    theme: 'snow'
+	});
 
-  	var form = document.querySelector('form[name=post-create]');
+	var form = document.querySelector('form[name=post-create]');
 
-  	form.onsubmit = function() {
+	form.onsubmit = function() {
 
-  		console.log("hello");
+		var content = document.querySelector('input[name=content]');
+		content.value = JSON.stringify(editor.getContents());
 
-  		var content = document.querySelector('input[name=content]');
-  		content.value = JSON.stringify(editor.getContents());
-
-  		//console.log("Submitted", $(form).serialize(), $(form).serializeArray());
-
-  		//return false;
-  	}
-
-
-  	/*document.getElementById('create-post').addEventListener("click", function(){
-  		console.log(JSON.stringify(editor.getContents()));
-
-  		var title = document.getElementById('text-title').value;
-
-  		console.log(title);
-  	});*/
-
-
+	}
 
 </script>
 @endsection
