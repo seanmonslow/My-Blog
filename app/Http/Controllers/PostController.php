@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -63,13 +64,29 @@ class PostController extends Controller
     {
         //
 
-        $post = Post::with('poster')->findOrFail($request->route('id'));
+        $post = Post::with('poster', 'comments')->findOrFail($request->route('id'));
 
         $post->content = $post->getContent();
 
         //return $post;
 
         return view('post', ["post"=> $post]);
+    }
+
+    public function createComment(Request $request){
+
+        $comment = new Comment;
+
+        $comment->post_id = $request->route('id');
+
+        $comment->name = $request->comment_name;
+
+        $comment->content = $request->comment;
+
+        $comment->save();
+
+        return redirect('/post/'.$request->route('id'));
+
     }
 
     /**

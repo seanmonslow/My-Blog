@@ -72,7 +72,7 @@
               </a>
               <p class="post-meta">Posted by
                 <a href="#">{{$post->poster->name}}</a>
-                on </p>
+                on {{$post->created_at}}</p>
             </div>
             <hr>
         @endforeach

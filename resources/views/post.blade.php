@@ -63,10 +63,10 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <h2 class="post-title">
+        <h2 class="post-title" style="text-align:center">
           {{$post->title}}
         </h2>
-        <p style="margin:0px;">
+        <p style="margin:0px;text-align:center;">
           <em>{{$post->poster->name}}</em>
         </p>
       </div>
@@ -75,6 +75,32 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <p class="">{!! $post->content !!}</p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h3 class="post-title" style="text-align:center;">
+          Comments
+        </h3>
+        @foreach ($post->comments AS $comment)
+          <p class="font-weight-light" style="margin-bottom:0px;">{{$comment->name}}</p>
+          <p style="margin-bottom:0px;">{{ $comment->content }}</p>
+          <p class="font-weight-light" style="margin-bottom:0px;">{{ $comment->created_at }}</p>
+          <hr style="margin:4px;">
+        @endforeach
+        <form action="/post/{{$post->id}}/createcomment" method="POST">
+          @csrf
+          <div class="form-group">
+            <label for="comment_name">Name</label>
+            <input class="form-control" id="comment_name" placeholder="Enter name" name="comment_name">
+          </div>
+          <div class="form-group">
+            <label for="comment">Comment</label>
+            <input class="form-control" id="comment" placeholder="Enter comment" name="comment">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
     </div>
   </div>

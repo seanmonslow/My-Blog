@@ -25,6 +25,8 @@ Route::get('/admin/create-post', );
 
 Route::post('/admin/create-post', );
 */
+Route::post('/post/{id}/createcomment', 'PostController@createComment');
+
 Route::get('/post/{id}', 'PostController@show');
 
 Route::get('/home', 'HomeController@index')->name('home');
